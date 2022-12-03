@@ -1,10 +1,11 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
-import { GlobalStyle } from './GlobalStyle';
-import Form from './Form';
-import ContactList from './ContactList';
-import Filter from './Filter';
-import Layout from './Layout';
+import Form from '../Form';
+import ContactList from '../ContactList';
+import Filter from '../Filter';
+import Layout from '../Layout';
+import GlobalStyle from '../GlobalStyle';
+import Title from './App.styled';
 
 class App extends Component {
   state = {
@@ -54,9 +55,9 @@ class App extends Component {
     const { filter } = this.state;
     return (
       <Layout>
-        <h1>Phonebook</h1>
+        <Title>Phonebook</Title>
         <Form onSubmit={this.addContact} />
-        <h2>Contacts</h2>
+        <Title as="h2">Contacts</Title>
         <Filter value={filter} onChange={this.changeFilter} />
         <ContactList
           contacts={this.getFilteredContact()}

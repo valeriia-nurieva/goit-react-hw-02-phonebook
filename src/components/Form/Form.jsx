@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import { FormStyled, FormLabel, FormInput, Button } from './Form.styled';
 
 const INITIAL_STATE = {
   name: '',
@@ -29,10 +30,10 @@ class Form extends Component {
   render() {
     const { name, number } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
+      <FormStyled onSubmit={this.handleSubmit}>
+        <FormLabel>
           Name
-          <input
+          <FormInput
             value={name}
             type="text"
             name="name"
@@ -41,10 +42,10 @@ class Form extends Component {
             required
             onChange={this.handleChange}
           />
-        </label>
-        <label>
+        </FormLabel>
+        <FormLabel>
           Number
-          <input
+          <FormInput
             value={number}
             type="tel"
             name="number"
@@ -53,9 +54,9 @@ class Form extends Component {
             required
             onChange={this.handleChange}
           />
-        </label>
-        <button type="submit">Add contact</button>
-      </form>
+        </FormLabel>
+        <Button type="submit">Add contact</Button>
+      </FormStyled>
     );
   }
 }
