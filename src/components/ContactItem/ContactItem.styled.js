@@ -10,13 +10,13 @@ export const Button = styled.button`
   width: 80px;
   border: none;
   border-radius: ${({ theme }) => `${theme.spacing(1)}`};
-  background-color: #2196f3;
-  color: #fff;
+  background-color: ${({ theme }) => `${theme.colors.accent}`};
+  color: ${({ theme }) => `${theme.colors.white}`};
   font-size: inherit;
   cursor: pointer;
   transition: cubic-bezier(0.075, 0.82, 0.165, 1) 3250ms;
   :hover,
   :focus {
-    background-color: #1976d2;
+    background-color: ${({ theme }) => `${theme.colors.hover}`};
   }
 `;

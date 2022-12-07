@@ -19,18 +19,14 @@ class App extends Component {
   };
 
   addContact = ({ name, number }) => {
-    const { contacts } = this.state;
     const newContact = {
       id: nanoid(),
       name,
       number,
     };
-
-    contacts.find(contact => contact.name === name)
-      ? alert(name + ' is already in contacts.')
-      : this.setState(({ contacts }) => ({
-          contacts: [newContact, ...contacts],
-        }));
+    this.setState(({ contacts }) => ({
+      contacts: [newContact, ...contacts],
+    }));
   };
 
   deleteContact = contactId => {
@@ -52,11 +48,11 @@ class App extends Component {
   };
 
   render() {
-    const { filter } = this.state;
+    const { filter, contacts } = this.state;
     return (
       <Layout>
         <Title>Phonebook</Title>
-        <Form onSubmit={this.addContact} />
+        <Form onSubmit={this.addContact} contacts={contacts} />
         <Title as="h2">Contacts</Title>
         <Filter value={filter} onChange={this.changeFilter} />
         <ContactList

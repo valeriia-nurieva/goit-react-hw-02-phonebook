@@ -10,17 +10,17 @@ export const FormStyled = styled.form`
 export const FormLabel = styled.label`
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
+  margin-bottom: ${({ theme }) => `${theme.spacing(4)}`};
 `
 
 export const FormInput = styled.input`
-  padding: 8px;
-  border: 1px solid #2a2a2a;
-  border-radius: 4px;
+  padding: ${({ theme }) => `${theme.spacing(2)}`};
+  border: 1px solid ${({ theme }) => `${theme.colors.black}`};
+  border-radius: ${({ theme }) => `${theme.spacing(1)}`};
   font-family: sans-serif;
-  font-size: 16px;
+  font-size: ${({theme})=>`${theme.fontSizes[2]}`};
   outline: none;
-  margin-top: 4px;
+  margin-top: ${({ theme }) => `${theme.spacing(1)}`};
 `
 
 export const Button = styled.button`
@@ -33,13 +33,13 @@ export const Button = styled.button`
   width: 120px;
   border: none;
   border-radius: ${({ theme }) => `${theme.spacing(1)}`};
-  background-color: #2196f3;
-  color: #fff;
+  background-color: ${({ theme }) => `${theme.colors.accent}`};
+  color: ${({ theme }) => `${theme.colors.white}`};
   font-size: inherit;
   cursor: pointer;
   transition: cubic-bezier(0.075, 0.82, 0.165, 1) 3250ms;
   :hover,
   :focus {
-    background-color: #1976d2;
+    background-color: ${({ theme }) => `${theme.colors.hover}`};
   }
 `;

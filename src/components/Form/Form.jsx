@@ -8,6 +8,17 @@ const INITIAL_STATE = {
 };
 
 class Form extends Component {
+  static defaultProps = {
+    onSubmit: PropTypes.func.isRequired,
+    contact: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        name: PropTypes.string,
+        number: PropTypes.string,
+      })
+    ).isRequired,
+  };
+
   state = INITIAL_STATE;
 
   handleChange = e => {
@@ -18,9 +29,16 @@ class Form extends Component {
   };
 
   handleSubmit = e => {
+    const { contacts } = this.props;
+    const { name } = this.state;
     e.preventDefault();
-    this.props.onSubmit(this.state);
-    this.reset();
+
+    if (contacts.find(contact => contact.name === name)) {
+      return alert(`${name} is is already in contacts.`);
+    } else {
+      this.props.onSubmit(this.state);
+      this.reset();
+    }
   };
 
   reset = () => {
@@ -59,10 +77,6 @@ class Form extends Component {
       </FormStyled>
     );
   }
-}
-
-Form.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
 }
 
 export default Form;
